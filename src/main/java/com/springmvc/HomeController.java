@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +32,32 @@ public class HomeController {
 		m.addAttribute("name", "Seema");
 		m.addAttribute("id", 101);
 		
+//		Exception handling in spring MVC
+//		Integer.parseInt("codewithseema");// exception-1
+		
+		String name =null;// exception-2
+		name.toUpperCase();
+		
 		return "home";
 	}
 
+//	@ExceptionHandler(NumberFormatException.class)
+//	public String numberException()
+//	{
+//		return "error";
+//	}
+//	
+//	@ExceptionHandler(NullPointerException.class)
+//	public String nullException()
+//	{
+//		return "error";
+//	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public String allException()
+//	{
+//		return "error";
+//	}
 		
 	@RequestMapping("/register")
 	public String signup()
