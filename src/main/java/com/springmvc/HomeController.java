@@ -95,5 +95,38 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(path = "/load_file_upload")
+	public String loadFileUploadPage() {
+		return "file_upload";
+	}
+
+	
+	@RequestMapping(path = "/fileUpload", method = RequestMethod.POST)
+	public String fileUpload(@RequestParam("img") CommonsMultipartFile file, HttpServletRequest req, Model m)
+	{
+		System.out.println(file.getName());
+		System.out.println(file.getOriginalFilename());
+		System.out.println(file.getContentType());
+		System.out.println(file.getSize());
+		
+		byte[] bytes = file.getBytes();
+
+		String path = req.getServletContext().getRealPath("/") + "WEB-INF" + File.separator + "resources"
+				+ File.separator + "img" + File.separator + file.getOriginalFilename();
+		System.out.println(path);
+		
+		try {
+			FileOutputStream fos = new FileOutputStream(path);
+			fos.write(bytes);
+			fos.close();
+			System.out.println("File Uploaded");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("imgname", file.getOriginalFilename());
+		
+		return "file_success";
+
+	}
 	
 }

@@ -22,6 +22,8 @@
 		<a href="register" class="btn btn-primary btn-sm">Register</a> <a
 			href="google1" class=" btn btn-sm btn-danger">Google-1</a> <a
 			href="google2" class=" btn btn-sm btn-warning">Google-2</a>
+			<a href="load_file_upload" class="btn btn-sm btn-primary">File
+			Upload</a>
 		
 			
 			<div class="container p-5">
